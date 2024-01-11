@@ -1,20 +1,16 @@
-import { task } from "hardhat/config";
-import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { parseUnits } from "@ethersproject/units";
+import ERC20 from "@openzeppelin/contracts/build/contracts/ERC20.json";
 import { getAddress } from "@zetachain/protocol-contracts";
 import ERC20Custody from "@zetachain/protocol-contracts/abi/evm/ERC20Custody.sol/ERC20Custody.json";
 import { prepareData } from "@zetachain/toolkit/helpers";
-import { utils, ethers } from "ethers";
-import ERC20 from "@openzeppelin/contracts/build/contracts/ERC20.json";
+import { ethers, utils } from "ethers";
+import { task } from "hardhat/config";
+import { HardhatRuntimeEnvironment } from "hardhat/types";
 
 const main = async (args: any, hre: HardhatRuntimeEnvironment) => {
   const [signer] = await hre.ethers.getSigners();
 
-  const data = prepareData(
-    args.contract,
-    [],
-    []
-  );
+  const data = prepareData(args.contract, [], []);
 
   let tx;
 
